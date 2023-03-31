@@ -5,6 +5,6 @@ macros:
   arguments:
   - name: "column_name"
     type: "unknown"
-  - name: "decimal_places = 2"
+  - name: "decimal_places = 1"
     type: "unknown"
   macroType: "expression"

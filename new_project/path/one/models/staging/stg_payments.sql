@@ -24,5 +24,4 @@ renamed AS (
 )
 
 SELECT * 
-
 FROM renamed
