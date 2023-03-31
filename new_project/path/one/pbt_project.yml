@@ -93,7 +93,6 @@ sqlMacros:
     author: haresh@prophecy.io
     files:
     - macros/cents_to_dollar.sql
-    - macros/macros.yml
     createdAt: '2023-03-30 13:38:41'
     modifiedAt: '2023-03-30 13:38:41'
   .prophecy/metadata/sqlmacros/just_concat:
@@ -107,7 +106,7 @@ sqlMacros:
 sqlSeeds:
   .prophecy/metadata/sqlseeds/raw_customers:
     name: raw_customers
-    description: A mapping of two letter country codes to country names.
+    description: A mapping of two letter country codes to country names
     author: haresh@prophecy.io
     files:
     - seeds/raw_customers.csv
