@@ -20,7 +20,7 @@ sources:
         period: "hour"
     columns:
     - name: "first_name"
-      description: "This is a unique identifier for a customer."
+      description: "This is a unique identifier for a customer......"
       tags: []
       tests:
       - "unique"
