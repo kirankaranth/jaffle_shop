@@ -106,7 +106,7 @@ sqlMacros:
 sqlSeeds:
   .prophecy/metadata/sqlseeds/raw_customers:
     name: raw_customers
-    description: A mapping of two letter country codes to country names
+    description: A mapping of two letter country codes to country names. kiran2
     author: haresh@prophecy.io
     files:
     - seeds/raw_customers.csv

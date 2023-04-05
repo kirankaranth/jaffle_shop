@@ -10,7 +10,7 @@ version: "0.1"
 profile: "jaffle_shop"
 
 # ==================
-# File Path Configs
+# File Path Configs (kiran2)
 # ==================
 test-paths:
 - "tests"

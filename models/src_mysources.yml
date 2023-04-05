@@ -2,7 +2,7 @@ version: 2
 
 seeds:
   - name: raw_customers
-    description: A mapping of two letter country codes to country names
+    description: A mapping of two letter country codes to country names. kiran2
     columns:
       - name: first_name
         tests:
@@ -16,7 +16,7 @@ sources:
       - name: testless
         columns:
         - name: first_name
-          description: This is a unique identifier for a customer
+          description: This is a unique identifier for a customer. kiran2
           tests:
             - unique
             - not_null
