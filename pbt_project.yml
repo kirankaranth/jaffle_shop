@@ -1,0 +1,166 @@
+name: jaffle_shop
+description: ''
+version: 0.0.1
+author: null
+language: sql
+buildSystem: ''
+buildSystemDetails: null
+pipelines: {}
+datasets: {}
+templates: {}
+jobs: {}
+functions:
+  author: null
+  createdAt: '2023-04-12 12:59:05'
+  modifiedAt: '2023-04-12 12:59:05'
+  gems: {}
+  udfs: {}
+  udafs: {}
+  expressions: {}
+subgraphs: {}
+sqlModels:
+  .prophecy/metadata/sqlmodels/stg_orders:
+    name: stg_orders
+    description: null
+    author: kiranadmin@prophecy.io
+    files:
+    - models/staging/stg_orders.sql
+    - .prophecy/ide/models/stg_orders.json
+    - models/staging/schema.yml
+    sqlDependencies:
+      models: []
+      datasets: []
+    createdAt: '2023-04-12 12:59:05'
+    modifiedAt: '2023-04-12 12:59:05'
+  .prophecy/metadata/sqlmodels/orders:
+    name: orders
+    description: This table has basic information about orders, as well as some derived
+      facts based on payments
+    author: kiranadmin@prophecy.io
+    files:
+    - models/orders.sql
+    - .prophecy/ide/models/orders.json
+    - models/schema.yml
+    sqlDependencies:
+      models: []
+      datasets: []
+    createdAt: '2023-04-12 12:59:05'
+    modifiedAt: '2023-04-12 12:59:05'
+  .prophecy/metadata/sqlmodels/customers:
+    name: customers
+    description: This table has basic information about a customer, as well as some
+      derived facts based on a customer's orders
+    author: kiranadmin@prophecy.io
+    files:
+    - models/customers.sql
+    - .prophecy/ide/models/customers.json
+    - models/schema.yml
+    sqlDependencies:
+      models: []
+      datasets: []
+    createdAt: '2023-04-12 12:59:05'
+    modifiedAt: '2023-04-12 12:59:05'
+  .prophecy/metadata/sqlmodels/stg_payments:
+    name: stg_payments
+    description: null
+    author: kiranadmin@prophecy.io
+    files:
+    - models/staging/stg_payments.sql
+    - .prophecy/ide/models/stg_payments.json
+    - models/staging/schema.yml
+    sqlDependencies:
+      models: []
+      datasets: []
+    createdAt: '2023-04-12 12:59:05'
+    modifiedAt: '2023-04-12 12:59:05'
+  .prophecy/metadata/sqlmodels/stg_customers:
+    name: stg_customers
+    description: null
+    author: kiranadmin@prophecy.io
+    files:
+    - models/staging/stg_customers.sql
+    - .prophecy/ide/models/stg_customers.json
+    - models/staging/schema.yml
+    sqlDependencies:
+      models: []
+      datasets: []
+    createdAt: '2023-04-12 12:59:05'
+    modifiedAt: '2023-04-12 12:59:05'
+sqlMacros:
+  .prophecy/metadata/sqlmacros/cents_to_dollars:
+    name: cents_to_dollars
+    macroType: expression
+    description: null
+    author: kiranadmin@prophecy.io
+    files:
+    - macros/cents_to_dollar.sql
+    createdAt: '2023-04-12 12:59:05'
+    modifiedAt: '2023-04-12 12:59:05'
+  .prophecy/metadata/sqlmacros/just_concat:
+    name: just_concat
+    macroType: query
+    description: null
+    author: kiranadmin@prophecy.io
+    files:
+    - macros/cents_to_dollar.sql
+    createdAt: '2023-04-12 12:59:05'
+    modifiedAt: '2023-04-12 12:59:05'
+sqlSeeds:
+  .prophecy/metadata/sqlseeds/raw_customers:
+    name: raw_customers
+    description: A mapping of two letter country codes to country names
+    author: kiranadmin@prophecy.io
+    files:
+    - seeds/raw_customers.csv
+    - models/src_mysources.yml
+    createdAt: '2023-04-12 12:59:05'
+    modifiedAt: '2023-04-12 12:59:05'
+  .prophecy/metadata/sqlseeds/raw_orders:
+    name: raw_orders
+    description: null
+    author: kiranadmin@prophecy.io
+    files:
+    - seeds/raw_orders.csv
+    createdAt: '2023-04-12 12:59:05'
+    modifiedAt: '2023-04-12 12:59:05'
+  .prophecy/metadata/sqlseeds/raw_payments:
+    name: raw_payments
+    description: null
+    author: kiranadmin@prophecy.io
+    files:
+    - seeds/raw_payments.csv
+    createdAt: '2023-04-12 12:59:05'
+    modifiedAt: '2023-04-12 12:59:05'
+  .prophecy/metadata/sqlseeds/snowflake_contract_rates:
+    name: snowflake_contract_rates
+    description: null
+    author: kiranadmin@prophecy.io
+    files:
+    - seeds/snowflake_contract_rates.csv
+    createdAt: '2023-04-12 12:59:05'
+    modifiedAt: '2023-04-12 12:59:05'
+sqlSources:
+  .prophecy/metadata/sqlsources/myAliasedTest:
+    name: myAliasedTest
+    description: null
+    author: kiranadmin@prophecy.io
+    files:
+    - models/src_mysources.yml
+    createdAt: '2023-04-12 12:59:05'
+    modifiedAt: '2023-04-12 12:59:05'
+    tables:
+    - name: testless
+      description: null
+      author: kiranadmin@prophecy.io
+      createdAt: '2023-04-12 12:59:05'
+      modifiedAt: '2023-04-12 12:59:05'
+sqlUnreferencedSources: {}
+sqlPipeline:
+  name: sqlPipeline
+  description: null
+  author: kiranadmin@prophecy.io
+  createdAt: '2023-04-12 12:59:05'
+  modifiedAt: '2023-04-12 12:59:05'
+dependencies: '[]'
+projectDependencies: {}
+pipelineConfigurations: {}
