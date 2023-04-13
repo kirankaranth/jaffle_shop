@@ -1,1 +1,4 @@
+<<<<<<< HEAD
 By default, this is the seeds directory. This directory would be used to read .csv files
+=======
+>>>>>>> refs/remotes/local/main
