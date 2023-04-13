@@ -1,6 +1,6 @@
 name: jaffle_shop
 description: ''
-version: 0.0.1
+version: '1'
 author: null
 language: sql
 buildSystem: ''
