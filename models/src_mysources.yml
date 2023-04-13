@@ -1,26 +1,33 @@
+---
 version: 2
-
 seeds:
-  - name: raw_customers
-    description: A mapping of two letter country codes to country names. kiran1
-    columns:
-      - name: first_name
-        tests:
-          - not_null
-
+- name: "raw_customers"
+  description: "A mapping of two letter country codes to country names. kiran1"
+  columns:
+  - name: "first_name"
+    tests:
+    - "not_null"
 sources:
-  - name: myAliasedTest
-    database: jaffle_shop
-    schema: dbt_alice
-    tables:
-      - name: testless
-        columns:
-        - name: first_name
-          description: This is a unique identifier for a customer. kiran1
-          tests:
-            - unique
-            - not_null
-            - my_not_null
-        loaded_at_field: created_at
-        freshness:
-          warn_after: {count: 12, period: hour}
+- name: "myAliasedTest"
+  database: "jaffle_shop"
+  schema: "dbt_alice"
+  tables:
+  - name: "testless"
+    loaded_at_field: "created_at"
+    freshness:
+      warn_after:
+        count: 12
+        period: "hour"
+    columns:
+    - name: "first_name"
+      description: "This is a unique identifier for a customer. kiran1"
+      tags: []
+      tests:
+      - "unique"
+      - "not_null"
+      - "my_not_null"
+      dataType:
+        type: "String"
+    - name: "last_name"
+      dataType:
+        type: "String"

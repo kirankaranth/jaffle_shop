@@ -89,6 +89,7 @@ sqlModels:
 sqlMacros:
   .prophecy/metadata/sqlmacros/cents_to_dollars:
     name: cents_to_dollars
+    macroType: expression
     description: null
     author: haresh@prophecy.io
     files:
@@ -97,6 +98,7 @@ sqlMacros:
     modifiedAt: '2023-04-05 14:40:55'
   .prophecy/metadata/sqlmacros/just_concat:
     name: just_concat
+    macroType: query
     description: null
     author: haresh@prophecy.io
     files:
