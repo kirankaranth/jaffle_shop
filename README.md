@@ -81,3 +81,7 @@ For more information on dbt:
 *** Release notes for version: 1 ***
 
 1
+
+*** Release notes for version: 2 ***
+
+2
