@@ -17,7 +17,6 @@ WITH payments AS (
   FROM {{ ref('stg_payments')}}
 
 ),
--- kiran comment
 
 order_payments AS (
 
