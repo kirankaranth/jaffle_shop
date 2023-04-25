@@ -46,18 +46,6 @@ sqlModels:
       datasets: []
     createdAt: '2023-04-05 14:40:55'
     modifiedAt: '2023-04-05 14:40:55'
-  .prophecy/metadata/sqlmodels/customers_new:
-    name: customers_new
-    description: null
-    author: kiranadmin@prophecy.io
-    files:
-    - models/customers_new.sql
-    - .prophecy/ide/models/customers_new.json
-    sqlDependencies:
-      models: []
-      datasets: []
-    createdAt: '2023-04-25 06:38:47'
-    modifiedAt: '2023-04-25 06:38:47'
   .prophecy/metadata/sqlmodels/customers:
     name: customers
     description: This table has basic information about a customer, as well as some
