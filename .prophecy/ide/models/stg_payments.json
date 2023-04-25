@@ -122,6 +122,30 @@
         } ],
         "outputs" : [ {
           "id" : "XTArOPKr",
+          "schema" : {
+            "providerType" : "BigQuery",
+            "fields" : [ {
+              "name" : "payment_id",
+              "dataType" : {
+                "type" : "Integer"
+              }
+            }, {
+              "name" : "order_id",
+              "dataType" : {
+                "type" : "Integer"
+              }
+            }, {
+              "name" : "payment_method",
+              "dataType" : {
+                "type" : "String"
+              }
+            }, {
+              "name" : "amount",
+              "dataType" : {
+                "type" : "Float"
+              }
+            } ]
+          },
           "slug" : "out"
         } ],
         "isCustomOutputSchema" : false
@@ -148,10 +172,58 @@
       "ports" : {
         "inputs" : [ {
           "id" : "IxiBPjbK",
+          "schema" : {
+            "providerType" : "BigQuery",
+            "fields" : [ {
+              "name" : "payment_id",
+              "dataType" : {
+                "type" : "Integer"
+              }
+            }, {
+              "name" : "order_id",
+              "dataType" : {
+                "type" : "Integer"
+              }
+            }, {
+              "name" : "payment_method",
+              "dataType" : {
+                "type" : "String"
+              }
+            }, {
+              "name" : "amount",
+              "dataType" : {
+                "type" : "Float"
+              }
+            } ]
+          },
           "slug" : "renamed"
         } ],
         "outputs" : [ {
           "id" : "f3qfuxyq",
+          "schema" : {
+            "providerType" : "BigQuery",
+            "fields" : [ {
+              "name" : "payment_id",
+              "dataType" : {
+                "type" : "Integer"
+              }
+            }, {
+              "name" : "order_id",
+              "dataType" : {
+                "type" : "Integer"
+              }
+            }, {
+              "name" : "payment_method",
+              "dataType" : {
+                "type" : "String"
+              }
+            }, {
+              "name" : "amount",
+              "dataType" : {
+                "type" : "Float"
+              }
+            } ]
+          },
           "slug" : "out"
         } ],
         "isCustomOutputSchema" : false

@@ -1,0 +1,46 @@
+{
+  "id" : "customers_new",
+  "metainfo" : {
+    "label" : "customers_new",
+    "autoLayout" : false,
+    "staleState" : "none",
+    "sourceSuggestions" : {
+      "sources" : [ ]
+    }
+  },
+  "processes" : {
+    "customers_new##CFp6YDzC" : {
+      "id" : "customers_new##CFp6YDzC",
+      "component" : "TargetModel",
+      "metadata" : {
+        "label" : "customers_new",
+        "x" : 120,
+        "y" : 120,
+        "phase" : 0
+      },
+      "properties" : {
+        "customQueryDisabled" : true,
+        "customQuery" : false,
+        "incrementalEditorDisabled" : true,
+        "query" : "",
+        "incrementalKey" : false,
+        "incremental" : {
+          "expression" : "true"
+        }
+      },
+      "ports" : {
+        "inputs" : [ {
+          "id" : "KEMcDDgE",
+          "slug" : "in0"
+        } ],
+        "outputs" : [ {
+          "id" : "aRbSHXUF",
+          "slug" : "out"
+        } ],
+        "isCustomOutputSchema" : false
+      }
+    }
+  },
+  "connections" : [ ],
+  "component" : "Model"
+}
