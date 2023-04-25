@@ -1,0 +1,39 @@
+{
+  "macro_s8JJo80D" : {
+    "name" : "cents_to_dollars",
+    "macroId" : "macro_s8JJo80D",
+    "macroType" : "expression",
+    "definition" : "round(1.0 * {{column_name}} / 100, {{decimal_places}})",
+    "parameters" : {
+      "type" : "record",
+      "fields" : [ {
+        "name" : "column_name",
+        "kind" : {
+          "type" : "value"
+        },
+        "optional" : false,
+        "isWorkflowNodeConfiguration" : false
+      }, {
+        "name" : "decimal_places",
+        "kind" : {
+          "type" : "value",
+          "value" : "2"
+        },
+        "optional" : true,
+        "isWorkflowNodeConfiguration" : false
+      } ]
+    },
+    "staleState" : "none"
+  },
+  "macro_OT1xOzcM" : {
+    "name" : "just_concat",
+    "macroId" : "macro_OT1xOzcM",
+    "macroType" : "query",
+    "definition" : "\nselect * from dbt_alice.test limit 1",
+    "parameters" : {
+      "type" : "record",
+      "fields" : [ ]
+    },
+    "staleState" : "none"
+  }
+}

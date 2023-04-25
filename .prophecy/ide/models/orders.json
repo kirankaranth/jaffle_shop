@@ -1,0 +1,253 @@
+{
+  "id" : "orders",
+  "metainfo" : {
+    "label" : "orders",
+    "autoLayout" : true,
+    "staleState" : "none",
+    "sourceSuggestions" : {
+      "sources" : [ ]
+    },
+    "graphConfig" : {
+      "modelConfig" : {
+        "materialized" : "incremental",
+        "alias" : "orders",
+        "tags" : [ "\"orders_snapshots\"" ]
+      },
+      "userDefinedConfig" : {
+        "vars" : {
+          "payment_methods" : "['credit_card', 'coupon', 'bank_transfer', 'gift_card']",
+          "payments_dict" : "{ 'credit' : 'card10', 'bank' : 'transfer11' }"
+        }
+      }
+    }
+  },
+  "processes" : {
+    "orders##MJ8EhvLU" : {
+      "id" : "orders##MJ8EhvLU",
+      "component" : "TargetModel",
+      "metadata" : {
+        "label" : "orders",
+        "phase" : 0,
+        "macroDependencies" : [ ]
+      },
+      "properties" : {
+        "customQueryDisabled" : true,
+        "customQuery" : false,
+        "incrementalEditorDisabled" : true,
+        "query" : "SELECT * \n\nFROM final\n",
+        "incrementalKey" : false,
+        "incremental" : {
+          "expression" : "true"
+        }
+      },
+      "ports" : {
+        "inputs" : [ {
+          "id" : "Xuc5LJp9",
+          "slug" : "final"
+        } ],
+        "outputs" : [ {
+          "id" : "Sfyc5xxn",
+          "slug" : "out"
+        } ],
+        "isCustomOutputSchema" : false
+      }
+    },
+    "payments##FaiDAEgP" : {
+      "id" : "payments##FaiDAEgP",
+      "component" : "Model",
+      "metadata" : {
+        "label" : "payments",
+        "phase" : 0
+      },
+      "properties" : {
+        "table" : {
+          "name" : "stg_payments",
+          "sourceType" : "Model"
+        }
+      },
+      "ports" : {
+        "inputs" : [ ],
+        "outputs" : [ {
+          "id" : "danrMhIx",
+          "slug" : "out"
+        } ],
+        "isCustomOutputSchema" : false
+      }
+    },
+    "orders##xF5QiZYP" : {
+      "id" : "orders##xF5QiZYP",
+      "component" : "Model",
+      "metadata" : {
+        "label" : "orders",
+        "phase" : 0
+      },
+      "properties" : {
+        "table" : {
+          "name" : "stg_orders",
+          "sourceType" : "Model"
+        }
+      },
+      "ports" : {
+        "inputs" : [ ],
+        "outputs" : [ {
+          "id" : "ZxTJ9eEX",
+          "slug" : "out"
+        } ],
+        "isCustomOutputSchema" : false
+      }
+    },
+    "order_payments##a2URk6Tn" : {
+      "id" : "order_payments##a2URk6Tn",
+      "component" : "Aggregate",
+      "metadata" : {
+        "label" : "order_payments",
+        "phase" : 0,
+        "macroDependencies" : [ ]
+      },
+      "properties" : {
+        "aggregate" : [ {
+          "expression" : {
+            "expression" : "order_id"
+          }
+        }, {
+          "rowType" : "for",
+          "variable" : {
+            "expression" : "payment_method"
+          },
+          "iterable" : {
+            "expression" : "payment_methods"
+          },
+          "children" : [ {
+            "expression" : {
+              "expression" : "sum(CASE\n  WHEN payment_method = '{{ payment_method }}'\n    THEN amount\n  ELSE 0\nEND)"
+            },
+            "alias" : "{{payment_method}}_amount"
+          } ]
+        }, {
+          "expression" : {
+            "expression" : "sum(amount)"
+          },
+          "alias" : "total_amount"
+        } ],
+        "allowSelection" : true,
+        "condition" : {
+          "expression" : ""
+        },
+        "activeTab" : "aggregate",
+        "columnsSelector" : [ ],
+        "groupBy" : [ {
+          "expression" : {
+            "expression" : "order_id"
+          }
+        } ]
+      },
+      "ports" : {
+        "inputs" : [ {
+          "id" : "emOYNdiv",
+          "slug" : "payments"
+        } ],
+        "outputs" : [ {
+          "id" : "UdByLOHe",
+          "slug" : "out"
+        } ],
+        "isCustomOutputSchema" : false
+      }
+    },
+    "final##tmOEu3Y9" : {
+      "id" : "final##tmOEu3Y9",
+      "component" : "Join",
+      "metadata" : {
+        "label" : "final",
+        "phase" : 0,
+        "macroDependencies" : [ ]
+      },
+      "properties" : {
+        "conditions" : [ {
+          "alias" : "order_payments",
+          "expression" : {
+            "expression" : "orders.order_id = order_payments.order_id"
+          },
+          "joinType" : "LEFT"
+        } ],
+        "expressions" : [ {
+          "expression" : {
+            "expression" : "orders.order_id"
+          }
+        }, {
+          "expression" : {
+            "expression" : "orders.customer_id"
+          }
+        }, {
+          "expression" : {
+            "expression" : "orders.order_date"
+          }
+        }, {
+          "expression" : {
+            "expression" : "orders.status"
+          }
+        }, {
+          "rowType" : "for",
+          "variable" : {
+            "expression" : "payment_method"
+          },
+          "iterable" : {
+            "expression" : "payment_methods"
+          },
+          "children" : [ {
+            "expression" : {
+              "expression" : "order_payments.{{payment_method}}_amount"
+            }
+          } ]
+        }, {
+          "expression" : {
+            "expression" : "order_payments.total_amount"
+          },
+          "alias" : "amount"
+        } ],
+        "activeTab" : "conditions",
+        "columnsSelector" : [ ],
+        "headAlias" : "orders"
+      },
+      "ports" : {
+        "inputs" : [ {
+          "id" : "SVYfPUOX",
+          "slug" : "orders"
+        }, {
+          "id" : "FMTjRcq4",
+          "slug" : "order_payments"
+        } ],
+        "outputs" : [ {
+          "id" : "eUJS2fiQ",
+          "slug" : "out"
+        } ],
+        "isCustomOutputSchema" : false
+      }
+    }
+  },
+  "connections" : [ {
+    "id" : "jfOLELdg",
+    "source" : "payments##FaiDAEgP",
+    "sourcePort" : "danrMhIx",
+    "target" : "order_payments##a2URk6Tn",
+    "targetPort" : "emOYNdiv"
+  }, {
+    "id" : "iO30TGWS",
+    "source" : "orders##xF5QiZYP",
+    "sourcePort" : "ZxTJ9eEX",
+    "target" : "final##tmOEu3Y9",
+    "targetPort" : "SVYfPUOX"
+  }, {
+    "id" : "JkIjuLah",
+    "source" : "order_payments##a2URk6Tn",
+    "sourcePort" : "UdByLOHe",
+    "target" : "final##tmOEu3Y9",
+    "targetPort" : "FMTjRcq4"
+  }, {
+    "id" : "ZU1yDYeG",
+    "source" : "final##tmOEu3Y9",
+    "sourcePort" : "eUJS2fiQ",
+    "target" : "orders##MJ8EhvLU",
+    "targetPort" : "Xuc5LJp9"
+  } ],
+  "component" : "Model"
+}
