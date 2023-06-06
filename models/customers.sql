@@ -1,23 +1,23 @@
 with customers as (
-
+--test comment
     select * from {{ ref('stg_customers') }}
 
 ),
 
 orders as (
-
+--test comment
     select * from {{ ref('stg_orders') }}
 
 ),
 
 payments as (
-
+--test comment
     select * from {{ ref('stg_payments') }}
 
 ),
 
 customer_orders as (
-
+--test comment
         select
         customer_id,
 
@@ -31,7 +31,7 @@ customer_orders as (
 ),
 
 customer_payments as (
-
+--test comment
     select
         orders.customer_id,
         sum(amount) as total_amount
@@ -46,7 +46,7 @@ customer_payments as (
 ),
 
 final as (
-
+--test comment
     select
         customers.customer_id,
         customers.first_name,
