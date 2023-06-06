@@ -1,10 +1,11 @@
 with customers as (
+    --test comment
     select * from {{ ref('stg_customers') }}
 
 ),
 
 customer_orders AS (
-
+--test comment
   SELECT 
     customer_id,
     min(order_date) AS first_order,
@@ -18,7 +19,7 @@ customer_orders AS (
 ),
 
 payments AS (
-
+--test comment
   SELECT * 
   
   FROM {{ ref('stg_payments')}}
@@ -26,7 +27,7 @@ payments AS (
 ),
 
 customer_payments AS (
-
+--test comment
   SELECT 
     orders.customer_id,
     sum(amount) AS total_amount
@@ -40,7 +41,7 @@ customer_payments AS (
 ),
 
 customers AS (
-
+--test comment
   SELECT * 
   
   FROM {{ ref('stg_customers')}}
@@ -48,7 +49,7 @@ customers AS (
 ),
 
 final AS (
-
+--test comment
   SELECT 
     customers.customer_id,
     customers.first_name,
