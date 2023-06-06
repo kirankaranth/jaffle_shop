@@ -2,7 +2,7 @@
   "id" : "customers",
   "metainfo" : {
     "label" : "customers",
-    "autoLayout" : true,
+    "autoLayout" : false,
     "staleState" : "none",
     "sourceSuggestions" : {
       "sources" : [ ]
@@ -19,6 +19,8 @@
       "component" : "SQLStatement",
       "metadata" : {
         "label" : "customer_payments",
+        "x" : 340,
+        "y" : 520,
         "phase" : 0,
         "macroDependencies" : [ ]
       },
@@ -112,6 +114,8 @@
       "component" : "Model",
       "metadata" : {
         "label" : "customers",
+        "x" : 340,
+        "y" : 320,
         "phase" : 0
       },
       "properties" : {
@@ -153,6 +157,8 @@
       "component" : "Model",
       "metadata" : {
         "label" : "orders",
+        "x" : 120,
+        "y" : 140,
         "phase" : 0
       },
       "properties" : {
@@ -199,6 +205,8 @@
       "component" : "TargetModel",
       "metadata" : {
         "label" : "customers",
+        "x" : 760,
+        "y" : 320,
         "phase" : 0,
         "macroDependencies" : [ ]
       },
@@ -307,6 +315,8 @@
       "component" : "Model",
       "metadata" : {
         "label" : "payments",
+        "x" : 120,
+        "y" : 540,
         "phase" : 0
       },
       "properties" : {
@@ -353,6 +363,8 @@
       "component" : "Join",
       "metadata" : {
         "label" : "final",
+        "x" : 540,
+        "y" : 320,
         "phase" : 0,
         "macroDependencies" : [ ]
       },
@@ -523,6 +535,8 @@
       "component" : "Aggregate",
       "metadata" : {
         "label" : "customer_orders",
+        "x" : 340,
+        "y" : 120,
         "phase" : 0,
         "macroDependencies" : [ ]
       },
