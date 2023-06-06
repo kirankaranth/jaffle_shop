@@ -1,1 +1,253 @@
-{"id":"stg_orders","metainfo":{"label":"stg_orders","autoLayout":true,"staleState":"none","sourceSuggestions":{"sources":[]},"graphConfig":{"userDefinedConfig":{"vars":{}}}},"processes":{"source##Eckz0uyb":{"id":"source##Eckz0uyb","component":"Seed","metadata":{"label":"source","phase":0,"comment":"-\n    Normally we would select from the table here, but we are using seeds to load\n    our data in this project\n    "},"properties":{"table":{"name":"raw_orders","sourceType":"Seed"}},"ports":{"inputs":[],"outputs":[{"id":"KVZfA2fQ","schema":{"providerType":"dummy","fields":[]},"slug":"out"}],"isCustomOutputSchema":false}},"renamed##yRDoOvLI":{"id":"renamed##yRDoOvLI","component":"Reformat","metadata":{"label":"renamed","phase":0,"macroDependencies":[]},"properties":{"columnsSelector":[],"expressions":[{"expression":{"expression":"id"},"alias":"order_id"},{"expression":{"expression":"user_id"},"alias":"customer_id"},{"expression":{"expression":"order_date"}},{"expression":{"expression":"status"}}]},"ports":{"inputs":[{"id":"fG25vhGb","schema":{"providerType":"dummy","fields":[]},"slug":"source"}],"outputs":[{"id":"atXTuWGh","slug":"out"}],"isCustomOutputSchema":false}},"stg_orders##zvNaVUgy":{"id":"stg_orders##zvNaVUgy","component":"TargetModel","metadata":{"label":"stg_orders","phase":0,"macroDependencies":[]},"properties":{"customQueryDisabled":true,"customQuery":false,"incrementalEditorDisabled":true,"query":"SELECT * \n\nFROM renamed\n","incrementalKey":false,"incremental":{"expression":"true"}},"ports":{"inputs":[{"id":"yYyo5rAX","slug":"renamed"}],"outputs":[{"id":"fVPOFWET","slug":"out"}],"isCustomOutputSchema":false}}},"connections":[{"id":"PTX26dzS","source":"source##Eckz0uyb","sourcePort":"KVZfA2fQ","target":"renamed##yRDoOvLI","targetPort":"fG25vhGb"},{"id":"J6wf6G0a","source":"renamed##yRDoOvLI","sourcePort":"atXTuWGh","target":"stg_orders##zvNaVUgy","targetPort":"yYyo5rAX"}],"component":"Model"}
+{
+  "id" : "stg_orders",
+  "metainfo" : {
+    "label" : "stg_orders",
+    "autoLayout" : false,
+    "staleState" : "none",
+    "sourceSuggestions" : {
+      "sources" : [ ]
+    },
+    "graphConfig" : {
+      "userDefinedConfig" : {
+        "vars" : { }
+      }
+    }
+  },
+  "processes" : {
+    "source##qYyoK4n1" : {
+      "id" : "source##qYyoK4n1",
+      "component" : "Seed",
+      "metadata" : {
+        "label" : "source",
+        "x" : 120,
+        "y" : 120,
+        "phase" : 0,
+        "comment" : "-\n    Normally we would select from the table here, but we are using seeds to load\n    our data in this project\n    "
+      },
+      "properties" : {
+        "table" : {
+          "name" : "raw_orders",
+          "sourceType" : "Seed"
+        }
+      },
+      "ports" : {
+        "inputs" : [ ],
+        "outputs" : [ {
+          "id" : "hr1j0SKG",
+          "schema" : {
+            "providerType" : "BigQuery",
+            "fields" : [ {
+              "name" : "id",
+              "dataType" : {
+                "type" : "Integer"
+              }
+            }, {
+              "name" : "user_id",
+              "dataType" : {
+                "type" : "Integer"
+              }
+            }, {
+              "name" : "order_date",
+              "dataType" : {
+                "type" : "Date"
+              }
+            }, {
+              "name" : "status",
+              "dataType" : {
+                "type" : "String"
+              }
+            } ]
+          },
+          "slug" : "out"
+        } ],
+        "isCustomOutputSchema" : false
+      }
+    },
+    "renamed##agt04Hdj" : {
+      "id" : "renamed##agt04Hdj",
+      "component" : "Reformat",
+      "metadata" : {
+        "label" : "renamed",
+        "x" : 320,
+        "y" : 120,
+        "phase" : 0,
+        "macroDependencies" : [ ]
+      },
+      "properties" : {
+        "columnsSelector" : [ "P4vXjAnQ##id", "P4vXjAnQ##user_id", "P4vXjAnQ##order_date", "P4vXjAnQ##status" ],
+        "expressions" : [ {
+          "expression" : {
+            "expression" : "id"
+          },
+          "alias" : "order_id"
+        }, {
+          "expression" : {
+            "expression" : "user_id"
+          },
+          "alias" : "customer_id"
+        }, {
+          "expression" : {
+            "expression" : "order_date"
+          }
+        }, {
+          "expression" : {
+            "expression" : "status"
+          }
+        } ]
+      },
+      "ports" : {
+        "inputs" : [ {
+          "id" : "P4vXjAnQ",
+          "schema" : {
+            "providerType" : "BigQuery",
+            "fields" : [ {
+              "name" : "id",
+              "dataType" : {
+                "type" : "Integer"
+              }
+            }, {
+              "name" : "user_id",
+              "dataType" : {
+                "type" : "Integer"
+              }
+            }, {
+              "name" : "order_date",
+              "dataType" : {
+                "type" : "Date"
+              }
+            }, {
+              "name" : "status",
+              "dataType" : {
+                "type" : "String"
+              }
+            } ]
+          },
+          "slug" : "source"
+        } ],
+        "outputs" : [ {
+          "id" : "NoCPGzQa",
+          "schema" : {
+            "providerType" : "BigQuery",
+            "fields" : [ {
+              "name" : "order_id",
+              "dataType" : {
+                "type" : "Integer"
+              }
+            }, {
+              "name" : "customer_id",
+              "dataType" : {
+                "type" : "Integer"
+              }
+            }, {
+              "name" : "order_date",
+              "dataType" : {
+                "type" : "Date"
+              }
+            }, {
+              "name" : "status",
+              "dataType" : {
+                "type" : "String"
+              }
+            } ]
+          },
+          "slug" : "out"
+        } ],
+        "isCustomOutputSchema" : false
+      }
+    },
+    "stg_orders##VyRSFzqj" : {
+      "id" : "stg_orders##VyRSFzqj",
+      "component" : "TargetModel",
+      "metadata" : {
+        "label" : "stg_orders",
+        "x" : 520,
+        "y" : 120,
+        "phase" : 0,
+        "macroDependencies" : [ ]
+      },
+      "properties" : {
+        "customQueryDisabled" : true,
+        "customQuery" : false,
+        "incrementalEditorDisabled" : true,
+        "query" : "SELECT * \n\nFROM renamed\n",
+        "incrementalKey" : false,
+        "incremental" : {
+          "expression" : "true"
+        }
+      },
+      "ports" : {
+        "inputs" : [ {
+          "id" : "XFU56teh",
+          "schema" : {
+            "providerType" : "BigQuery",
+            "fields" : [ {
+              "name" : "order_id",
+              "dataType" : {
+                "type" : "Integer"
+              }
+            }, {
+              "name" : "customer_id",
+              "dataType" : {
+                "type" : "Integer"
+              }
+            }, {
+              "name" : "order_date",
+              "dataType" : {
+                "type" : "Date"
+              }
+            }, {
+              "name" : "status",
+              "dataType" : {
+                "type" : "String"
+              }
+            } ]
+          },
+          "slug" : "renamed"
+        } ],
+        "outputs" : [ {
+          "id" : "fH9axcDu",
+          "schema" : {
+            "providerType" : "BigQuery",
+            "fields" : [ {
+              "name" : "order_id",
+              "dataType" : {
+                "type" : "Integer"
+              }
+            }, {
+              "name" : "customer_id",
+              "dataType" : {
+                "type" : "Integer"
+              }
+            }, {
+              "name" : "order_date",
+              "dataType" : {
+                "type" : "Date"
+              }
+            }, {
+              "name" : "status",
+              "dataType" : {
+                "type" : "String"
+              }
+            } ]
+          },
+          "slug" : "out"
+        } ],
+        "isCustomOutputSchema" : false
+      }
+    }
+  },
+  "connections" : [ {
+    "id" : "bimcpzet",
+    "source" : "source##qYyoK4n1",
+    "sourcePort" : "hr1j0SKG",
+    "target" : "renamed##agt04Hdj",
+    "targetPort" : "P4vXjAnQ"
+  }, {
+    "id" : "XwA81sJq",
+    "source" : "renamed##agt04Hdj",
+    "sourcePort" : "NoCPGzQa",
+    "target" : "stg_orders##VyRSFzqj",
+    "targetPort" : "XFU56teh"
+  } ],
+  "component" : "Model"
+}

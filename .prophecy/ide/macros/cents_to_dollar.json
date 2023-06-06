@@ -1,1 +1,39 @@
-{"macro_IUWmhYX7":{"name":"cents_to_dollars","macroId":"macro_IUWmhYX7","macroType":"expression","definition":"round(1.0 * {{column_name}} / 100, {{decimal_places}})","parameters":{"type":"record","fields":[{"name":"column_name","kind":{"type":"unknown"},"optional":false,"isWorkflowNodeConfiguration":false},{"name":"decimal_places","kind":{"type":"unknown","value":"2"},"optional":true,"isWorkflowNodeConfiguration":false}]},"staleState":"none"},"macro_yBpW6OcB":{"name":"just_concat","macroId":"macro_yBpW6OcB","macroType":"query","definition":"\nselect * from dbt_alice.test limit 1","parameters":{"type":"record","fields":[]},"staleState":"none"}}
+{
+  "macro_IUWmhYX7" : {
+    "name" : "cents_to_dollars",
+    "macroId" : "macro_IUWmhYX7",
+    "macroType" : "expression",
+    "definition" : "round(1.0 * {{column_name}} / 100, {{decimal_places}})",
+    "parameters" : {
+      "type" : "record",
+      "fields" : [ {
+        "name" : "column_name",
+        "kind" : {
+          "type" : "unknown"
+        },
+        "optional" : false,
+        "isWorkflowNodeConfiguration" : false
+      }, {
+        "name" : "decimal_places",
+        "kind" : {
+          "type" : "unknown",
+          "value" : "2"
+        },
+        "optional" : true,
+        "isWorkflowNodeConfiguration" : false
+      } ]
+    },
+    "staleState" : "none"
+  },
+  "macro_yBpW6OcB" : {
+    "name" : "just_concat",
+    "macroId" : "macro_yBpW6OcB",
+    "macroType" : "query",
+    "definition" : "\nselect * from dbt_alice.test limit 1",
+    "parameters" : {
+      "type" : "record",
+      "fields" : [ ]
+    },
+    "staleState" : "none"
+  }
+}

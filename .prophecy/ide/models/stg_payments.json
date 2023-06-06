@@ -1,1 +1,247 @@
-{"id":"stg_payments","metainfo":{"label":"stg_payments","autoLayout":true,"staleState":"none","sourceSuggestions":{"sources":[]},"graphConfig":{"userDefinedConfig":{"vars":{}}}},"processes":{"source##p4SlZACQ":{"id":"source##p4SlZACQ","component":"Seed","metadata":{"label":"source","phase":0,"comment":"-\n    Normally we would select from the table here, but we are using seeds to load\n    our data in this project\n    "},"properties":{"table":{"name":"raw_payments","sourceType":"Seed"}},"ports":{"inputs":[],"outputs":[{"id":"rFQBqZYO","schema":{"providerType":"dummy","fields":[]},"slug":"out"}],"isCustomOutputSchema":false}},"renamed##om6cdxnR":{"id":"renamed##om6cdxnR","component":"Reformat","metadata":{"label":"renamed","phase":0,"macroDependencies":[]},"properties":{"columnsSelector":[],"expressions":[{"expression":{"expression":"id"},"alias":"payment_id"},{"expression":{"expression":"order_id"}},{"expression":{"expression":"payment_method"}},{"expression":{"expression":"-- `amount` is currently stored in cents, so we convert it to dollars\namount / 100"},"alias":"amount"}]},"ports":{"inputs":[{"id":"Iwt7flNe","schema":{"providerType":"dummy","fields":[]},"slug":"source"}],"outputs":[{"id":"IYJ6nwpG","slug":"out"}],"isCustomOutputSchema":false}},"stg_payments##MaXyN1zs":{"id":"stg_payments##MaXyN1zs","component":"TargetModel","metadata":{"label":"stg_payments","phase":0,"macroDependencies":[]},"properties":{"customQueryDisabled":true,"customQuery":false,"incrementalEditorDisabled":true,"query":"SELECT * \n\nFROM renamed\n","incrementalKey":false,"incremental":{"expression":"true"}},"ports":{"inputs":[{"id":"qJqRwUXo","slug":"renamed"}],"outputs":[{"id":"Oh3y4r2H","slug":"out"}],"isCustomOutputSchema":false}}},"connections":[{"id":"JnQgHiCk","source":"source##p4SlZACQ","sourcePort":"rFQBqZYO","target":"renamed##om6cdxnR","targetPort":"Iwt7flNe"},{"id":"ici4BJGE","source":"renamed##om6cdxnR","sourcePort":"IYJ6nwpG","target":"stg_payments##MaXyN1zs","targetPort":"qJqRwUXo"}],"component":"Model"}
+{
+  "id" : "stg_payments",
+  "metainfo" : {
+    "label" : "stg_payments",
+    "autoLayout" : true,
+    "staleState" : "none",
+    "sourceSuggestions" : {
+      "sources" : [ ]
+    },
+    "graphConfig" : {
+      "userDefinedConfig" : {
+        "vars" : { }
+      }
+    }
+  },
+  "processes" : {
+    "source##PlLFqIlV" : {
+      "id" : "source##PlLFqIlV",
+      "component" : "Seed",
+      "metadata" : {
+        "label" : "source",
+        "phase" : 0,
+        "comment" : "-\n    Normally we would select from the table here, but we are using seeds to load\n    our data in this project\n    "
+      },
+      "properties" : {
+        "table" : {
+          "name" : "raw_payments",
+          "sourceType" : "Seed"
+        }
+      },
+      "ports" : {
+        "inputs" : [ ],
+        "outputs" : [ {
+          "id" : "yAWbmrxK",
+          "schema" : {
+            "providerType" : "BigQuery",
+            "fields" : [ {
+              "name" : "id",
+              "dataType" : {
+                "type" : "Integer"
+              }
+            }, {
+              "name" : "order_id",
+              "dataType" : {
+                "type" : "Integer"
+              }
+            }, {
+              "name" : "payment_method",
+              "dataType" : {
+                "type" : "String"
+              }
+            }, {
+              "name" : "amount",
+              "dataType" : {
+                "type" : "Integer"
+              }
+            } ]
+          },
+          "slug" : "out"
+        } ],
+        "isCustomOutputSchema" : false
+      }
+    },
+    "renamed##L2aWPwDM" : {
+      "id" : "renamed##L2aWPwDM",
+      "component" : "Reformat",
+      "metadata" : {
+        "label" : "renamed",
+        "phase" : 0,
+        "macroDependencies" : [ ]
+      },
+      "properties" : {
+        "columnsSelector" : [ "zOqru5wI##id", "zOqru5wI##order_id", "zOqru5wI##payment_method" ],
+        "expressions" : [ {
+          "expression" : {
+            "expression" : "id"
+          },
+          "alias" : "payment_id"
+        }, {
+          "expression" : {
+            "expression" : "order_id"
+          }
+        }, {
+          "expression" : {
+            "expression" : "payment_method"
+          }
+        }, {
+          "expression" : {
+            "expression" : "-- `amount` is currently stored in cents, so we convert it to dollars\namount / 100"
+          },
+          "alias" : "amount"
+        } ]
+      },
+      "ports" : {
+        "inputs" : [ {
+          "id" : "zOqru5wI",
+          "schema" : {
+            "providerType" : "BigQuery",
+            "fields" : [ {
+              "name" : "id",
+              "dataType" : {
+                "type" : "Integer"
+              }
+            }, {
+              "name" : "order_id",
+              "dataType" : {
+                "type" : "Integer"
+              }
+            }, {
+              "name" : "payment_method",
+              "dataType" : {
+                "type" : "String"
+              }
+            }, {
+              "name" : "amount",
+              "dataType" : {
+                "type" : "Integer"
+              }
+            } ]
+          },
+          "slug" : "source"
+        } ],
+        "outputs" : [ {
+          "id" : "iFjrL6DO",
+          "schema" : {
+            "providerType" : "BigQuery",
+            "fields" : [ {
+              "name" : "payment_id",
+              "dataType" : {
+                "type" : "Integer"
+              }
+            }, {
+              "name" : "order_id",
+              "dataType" : {
+                "type" : "Integer"
+              }
+            }, {
+              "name" : "payment_method",
+              "dataType" : {
+                "type" : "String"
+              }
+            }, {
+              "name" : "amount",
+              "dataType" : {
+                "type" : "Float"
+              }
+            } ]
+          },
+          "slug" : "out"
+        } ],
+        "isCustomOutputSchema" : false
+      }
+    },
+    "stg_payments##cW9LLqOq" : {
+      "id" : "stg_payments##cW9LLqOq",
+      "component" : "TargetModel",
+      "metadata" : {
+        "label" : "stg_payments",
+        "phase" : 0,
+        "macroDependencies" : [ ]
+      },
+      "properties" : {
+        "customQueryDisabled" : true,
+        "customQuery" : false,
+        "incrementalEditorDisabled" : true,
+        "query" : "SELECT * \n\nFROM renamed\n",
+        "incrementalKey" : false,
+        "incremental" : {
+          "expression" : "true"
+        }
+      },
+      "ports" : {
+        "inputs" : [ {
+          "id" : "Kx9z78dr",
+          "schema" : {
+            "providerType" : "BigQuery",
+            "fields" : [ {
+              "name" : "payment_id",
+              "dataType" : {
+                "type" : "Integer"
+              }
+            }, {
+              "name" : "order_id",
+              "dataType" : {
+                "type" : "Integer"
+              }
+            }, {
+              "name" : "payment_method",
+              "dataType" : {
+                "type" : "String"
+              }
+            }, {
+              "name" : "amount",
+              "dataType" : {
+                "type" : "Float"
+              }
+            } ]
+          },
+          "slug" : "renamed"
+        } ],
+        "outputs" : [ {
+          "id" : "jac6RCWK",
+          "schema" : {
+            "providerType" : "BigQuery",
+            "fields" : [ {
+              "name" : "payment_id",
+              "dataType" : {
+                "type" : "Integer"
+              }
+            }, {
+              "name" : "order_id",
+              "dataType" : {
+                "type" : "Integer"
+              }
+            }, {
+              "name" : "payment_method",
+              "dataType" : {
+                "type" : "String"
+              }
+            }, {
+              "name" : "amount",
+              "dataType" : {
+                "type" : "Float"
+              }
+            } ]
+          },
+          "slug" : "out"
+        } ],
+        "isCustomOutputSchema" : false
+      }
+    }
+  },
+  "connections" : [ {
+    "id" : "eHx86I0P",
+    "source" : "source##PlLFqIlV",
+    "sourcePort" : "yAWbmrxK",
+    "target" : "renamed##L2aWPwDM",
+    "targetPort" : "zOqru5wI"
+  }, {
+    "id" : "jX4za7XN",
+    "source" : "renamed##L2aWPwDM",
+    "sourcePort" : "iFjrL6DO",
+    "target" : "stg_payments##cW9LLqOq",
+    "targetPort" : "Kx9z78dr"
+  } ],
+  "component" : "Model"
+}
