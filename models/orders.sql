@@ -11,7 +11,7 @@
 
 
 WITH payments AS (
-
+-- kiran comment
   SELECT * 
   
   FROM {{ ref('stg_payments')}}
@@ -20,7 +20,7 @@ WITH payments AS (
 -- kiran comment
 
 order_payments AS (
-
+-- kiran comment
   SELECT 
     order_id,
     {% for payment_method in payment_methods %}
@@ -40,7 +40,7 @@ order_payments AS (
 ),
 
 orders AS (
-
+-- kiran comment
   SELECT * 
   
   FROM {{ ref('stg_orders')}}
@@ -48,7 +48,7 @@ orders AS (
 ),
 
 final AS (
-
+-- kiran comment
   SELECT 
     orders.order_id,
     orders.customer_id,
