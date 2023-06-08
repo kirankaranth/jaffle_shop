@@ -2,7 +2,7 @@
   "id" : "orders",
   "metainfo" : {
     "label" : "orders",
-    "autoLayout" : false,
+    "autoLayout" : true,
     "staleState" : "none",
     "sourceSuggestions" : {
       "sources" : [ ]
@@ -22,16 +22,61 @@
     }
   },
   "processes" : {
-    "order_payments##TxNmE61y" : {
-      "id" : "order_payments##TxNmE61y",
+    "orders##ljproaHF" : {
+      "id" : "orders##ljproaHF",
+      "component" : "Model",
+      "metadata" : {
+        "label" : "orders",
+        "phase" : 0,
+        "comment" : "kiran comment 123"
+      },
+      "properties" : {
+        "table" : {
+          "name" : "stg_orders",
+          "sourceType" : "Model"
+        }
+      },
+      "ports" : {
+        "inputs" : [ ],
+        "outputs" : [ {
+          "id" : "xbzvSaeg",
+          "schema" : {
+            "providerType" : "Databricks",
+            "fields" : [ {
+              "name" : "order_id",
+              "dataType" : {
+                "type" : "Integer"
+              }
+            }, {
+              "name" : "customer_id",
+              "dataType" : {
+                "type" : "Integer"
+              }
+            }, {
+              "name" : "order_date",
+              "dataType" : {
+                "type" : "Date"
+              }
+            }, {
+              "name" : "status",
+              "dataType" : {
+                "type" : "String"
+              }
+            } ]
+          },
+          "slug" : "out"
+        } ],
+        "isCustomOutputSchema" : false
+      }
+    },
+    "order_payments##DaykOllp" : {
+      "id" : "order_payments##DaykOllp",
       "component" : "Aggregate",
       "metadata" : {
         "label" : "order_payments",
-        "x" : 320,
-        "y" : 320,
         "phase" : 0,
         "macroDependencies" : [ ],
-        "comment" : "kiran comment"
+        "comment" : "kiran comment 444"
       },
       "properties" : {
         "aggregate" : [ {
@@ -63,7 +108,7 @@
           "expression" : ""
         },
         "activeTab" : "aggregate",
-        "columnsSelector" : [ "V3Io40Tl##order_id", "V3Io40Tl##payment_method", "V3Io40Tl##amount" ],
+        "columnsSelector" : [ "O1ALMEPv##order_id", "O1ALMEPv##payment_method", "O1ALMEPv##amount" ],
         "groupBy" : [ {
           "expression" : {
             "expression" : "order_id"
@@ -72,7 +117,7 @@
       },
       "ports" : {
         "inputs" : [ {
-          "id" : "V3Io40Tl",
+          "id" : "O1ALMEPv",
           "schema" : {
             "providerType" : "Databricks",
             "fields" : [ {
@@ -100,7 +145,7 @@
           "slug" : "payments"
         } ],
         "outputs" : [ {
-          "id" : "K9PgV2cZ",
+          "id" : "mwg94PU4",
           "schema" : {
             "providerType" : "Databricks",
             "fields" : [ {
@@ -140,64 +185,13 @@
         "isCustomOutputSchema" : false
       }
     },
-    "orders##xHuCrzed" : {
-      "id" : "orders##xHuCrzed",
-      "component" : "Model",
-      "metadata" : {
-        "label" : "orders",
-        "x" : 320,
-        "y" : 120,
-        "phase" : 0,
-        "comment" : "kiran comment 123"
-      },
-      "properties" : {
-        "table" : {
-          "name" : "stg_orders",
-          "sourceType" : "Model"
-        }
-      },
-      "ports" : {
-        "inputs" : [ ],
-        "outputs" : [ {
-          "id" : "Tvs4paBM",
-          "schema" : {
-            "providerType" : "Databricks",
-            "fields" : [ {
-              "name" : "order_id",
-              "dataType" : {
-                "type" : "Integer"
-              }
-            }, {
-              "name" : "customer_id",
-              "dataType" : {
-                "type" : "Integer"
-              }
-            }, {
-              "name" : "order_date",
-              "dataType" : {
-                "type" : "Date"
-              }
-            }, {
-              "name" : "status",
-              "dataType" : {
-                "type" : "String"
-              }
-            } ]
-          },
-          "slug" : "out"
-        } ],
-        "isCustomOutputSchema" : false
-      }
-    },
-    "payments##PNw9aE75" : {
-      "id" : "payments##PNw9aE75",
+    "payments##o69VRCvJ" : {
+      "id" : "payments##o69VRCvJ",
       "component" : "Model",
       "metadata" : {
         "label" : "payments",
-        "x" : -100,
-        "y" : 320,
         "phase" : 0,
-        "comment" : "kiran comment"
+        "comment" : "kiran comment 333"
       },
       "properties" : {
         "table" : {
@@ -208,7 +202,7 @@
       "ports" : {
         "inputs" : [ ],
         "outputs" : [ {
-          "id" : "oRn69FvS",
+          "id" : "LI7ijsAT",
           "schema" : {
             "providerType" : "Databricks",
             "fields" : [ {
@@ -238,193 +232,11 @@
         "isCustomOutputSchema" : false
       }
     },
-    "final##h0alCLGa" : {
-      "id" : "final##h0alCLGa",
-      "component" : "Join",
-      "metadata" : {
-        "label" : "final",
-        "x" : 520,
-        "y" : 220,
-        "phase" : 0,
-        "macroDependencies" : [ ],
-        "comment" : "kiran comment"
-      },
-      "properties" : {
-        "conditions" : [ {
-          "alias" : "order_payments",
-          "expression" : {
-            "expression" : "orders.order_id = order_payments.order_id"
-          },
-          "joinType" : "LEFT"
-        } ],
-        "expressions" : [ {
-          "expression" : {
-            "expression" : "orders.order_id"
-          }
-        }, {
-          "expression" : {
-            "expression" : "orders.customer_id"
-          }
-        }, {
-          "expression" : {
-            "expression" : "orders.order_date"
-          }
-        }, {
-          "expression" : {
-            "expression" : "orders.status"
-          }
-        }, {
-          "rowType" : "for",
-          "variable" : {
-            "expression" : "payment_method"
-          },
-          "iterable" : {
-            "expression" : "payment_methods"
-          },
-          "children" : [ {
-            "expression" : {
-              "expression" : "order_payments.{{payment_method}}_amount"
-            }
-          } ]
-        }, {
-          "expression" : {
-            "expression" : "order_payments.total_amount"
-          },
-          "alias" : "amount"
-        } ],
-        "activeTab" : "conditions",
-        "columnsSelector" : [ "wnX0ozY8##order_id", "wnX0ozY8##order_id", "wnX0ozY8##customer_id", "wnX0ozY8##order_date", "wnX0ozY8##status" ],
-        "headAlias" : "orders"
-      },
-      "ports" : {
-        "inputs" : [ {
-          "id" : "wnX0ozY8",
-          "schema" : {
-            "providerType" : "Databricks",
-            "fields" : [ {
-              "name" : "order_id",
-              "dataType" : {
-                "type" : "Integer"
-              }
-            }, {
-              "name" : "customer_id",
-              "dataType" : {
-                "type" : "Integer"
-              }
-            }, {
-              "name" : "order_date",
-              "dataType" : {
-                "type" : "Date"
-              }
-            }, {
-              "name" : "status",
-              "dataType" : {
-                "type" : "String"
-              }
-            } ]
-          },
-          "slug" : "orders"
-        }, {
-          "id" : "WZJMEY43",
-          "schema" : {
-            "providerType" : "Databricks",
-            "fields" : [ {
-              "name" : "order_id",
-              "dataType" : {
-                "type" : "Integer"
-              }
-            }, {
-              "name" : "credit_card_amount",
-              "dataType" : {
-                "type" : "Double"
-              }
-            }, {
-              "name" : "coupon_amount",
-              "dataType" : {
-                "type" : "Double"
-              }
-            }, {
-              "name" : "bank_transfer_amount",
-              "dataType" : {
-                "type" : "Double"
-              }
-            }, {
-              "name" : "gift_card_amount",
-              "dataType" : {
-                "type" : "Double"
-              }
-            }, {
-              "name" : "total_amount",
-              "dataType" : {
-                "type" : "Double"
-              }
-            } ]
-          },
-          "slug" : "order_payments"
-        } ],
-        "outputs" : [ {
-          "id" : "nkLeWKxS",
-          "schema" : {
-            "providerType" : "Databricks",
-            "fields" : [ {
-              "name" : "order_id",
-              "dataType" : {
-                "type" : "Integer"
-              }
-            }, {
-              "name" : "customer_id",
-              "dataType" : {
-                "type" : "Integer"
-              }
-            }, {
-              "name" : "order_date",
-              "dataType" : {
-                "type" : "Date"
-              }
-            }, {
-              "name" : "status",
-              "dataType" : {
-                "type" : "String"
-              }
-            }, {
-              "name" : "credit_card_amount",
-              "dataType" : {
-                "type" : "Double"
-              }
-            }, {
-              "name" : "coupon_amount",
-              "dataType" : {
-                "type" : "Double"
-              }
-            }, {
-              "name" : "bank_transfer_amount",
-              "dataType" : {
-                "type" : "Double"
-              }
-            }, {
-              "name" : "gift_card_amount",
-              "dataType" : {
-                "type" : "Double"
-              }
-            }, {
-              "name" : "amount",
-              "dataType" : {
-                "type" : "Double"
-              }
-            } ]
-          },
-          "slug" : "out"
-        } ],
-        "isCustomOutputSchema" : false
-      }
-    },
-    "orders##GKUuvAp1" : {
-      "id" : "orders##GKUuvAp1",
+    "orders##rlXVA5Ac" : {
+      "id" : "orders##rlXVA5Ac",
       "component" : "TargetModel",
       "metadata" : {
         "label" : "orders",
-        "x" : 720,
-        "y" : 220,
         "phase" : 0,
         "macroDependencies" : [ ]
       },
@@ -440,7 +252,7 @@
       },
       "ports" : {
         "inputs" : [ {
-          "id" : "pK2otYoV",
+          "id" : "OTSXI1C6",
           "schema" : {
             "providerType" : "Databricks",
             "fields" : [ {
@@ -493,7 +305,185 @@
           "slug" : "final"
         } ],
         "outputs" : [ {
-          "id" : "kwFpIHgA",
+          "id" : "GxSyqxcP",
+          "schema" : {
+            "providerType" : "Databricks",
+            "fields" : [ {
+              "name" : "order_id",
+              "dataType" : {
+                "type" : "Integer"
+              }
+            }, {
+              "name" : "customer_id",
+              "dataType" : {
+                "type" : "Integer"
+              }
+            }, {
+              "name" : "order_date",
+              "dataType" : {
+                "type" : "Date"
+              }
+            }, {
+              "name" : "status",
+              "dataType" : {
+                "type" : "String"
+              }
+            }, {
+              "name" : "credit_card_amount",
+              "dataType" : {
+                "type" : "Double"
+              }
+            }, {
+              "name" : "coupon_amount",
+              "dataType" : {
+                "type" : "Double"
+              }
+            }, {
+              "name" : "bank_transfer_amount",
+              "dataType" : {
+                "type" : "Double"
+              }
+            }, {
+              "name" : "gift_card_amount",
+              "dataType" : {
+                "type" : "Double"
+              }
+            }, {
+              "name" : "amount",
+              "dataType" : {
+                "type" : "Double"
+              }
+            } ]
+          },
+          "slug" : "out"
+        } ],
+        "isCustomOutputSchema" : false
+      }
+    },
+    "final##wJn3gb67" : {
+      "id" : "final##wJn3gb67",
+      "component" : "Join",
+      "metadata" : {
+        "label" : "final",
+        "phase" : 0,
+        "macroDependencies" : [ ],
+        "comment" : "kiran comment"
+      },
+      "properties" : {
+        "conditions" : [ {
+          "alias" : "order_payments",
+          "expression" : {
+            "expression" : "orders.order_id = order_payments.order_id"
+          },
+          "joinType" : "LEFT"
+        } ],
+        "expressions" : [ {
+          "expression" : {
+            "expression" : "orders.order_id"
+          }
+        }, {
+          "expression" : {
+            "expression" : "orders.customer_id"
+          }
+        }, {
+          "expression" : {
+            "expression" : "orders.order_date"
+          }
+        }, {
+          "expression" : {
+            "expression" : "orders.status"
+          }
+        }, {
+          "rowType" : "for",
+          "variable" : {
+            "expression" : "payment_method"
+          },
+          "iterable" : {
+            "expression" : "payment_methods"
+          },
+          "children" : [ {
+            "expression" : {
+              "expression" : "order_payments.{{payment_method}}_amount"
+            }
+          } ]
+        }, {
+          "expression" : {
+            "expression" : "order_payments.total_amount"
+          },
+          "alias" : "amount"
+        } ],
+        "activeTab" : "conditions",
+        "columnsSelector" : [ "if2KdIvy##order_id", "if2KdIvy##order_id", "if2KdIvy##customer_id", "if2KdIvy##order_date", "if2KdIvy##status" ],
+        "headAlias" : "orders"
+      },
+      "ports" : {
+        "inputs" : [ {
+          "id" : "if2KdIvy",
+          "schema" : {
+            "providerType" : "Databricks",
+            "fields" : [ {
+              "name" : "order_id",
+              "dataType" : {
+                "type" : "Integer"
+              }
+            }, {
+              "name" : "customer_id",
+              "dataType" : {
+                "type" : "Integer"
+              }
+            }, {
+              "name" : "order_date",
+              "dataType" : {
+                "type" : "Date"
+              }
+            }, {
+              "name" : "status",
+              "dataType" : {
+                "type" : "String"
+              }
+            } ]
+          },
+          "slug" : "orders"
+        }, {
+          "id" : "PzSj2JIU",
+          "schema" : {
+            "providerType" : "Databricks",
+            "fields" : [ {
+              "name" : "order_id",
+              "dataType" : {
+                "type" : "Integer"
+              }
+            }, {
+              "name" : "credit_card_amount",
+              "dataType" : {
+                "type" : "Double"
+              }
+            }, {
+              "name" : "coupon_amount",
+              "dataType" : {
+                "type" : "Double"
+              }
+            }, {
+              "name" : "bank_transfer_amount",
+              "dataType" : {
+                "type" : "Double"
+              }
+            }, {
+              "name" : "gift_card_amount",
+              "dataType" : {
+                "type" : "Double"
+              }
+            }, {
+              "name" : "total_amount",
+              "dataType" : {
+                "type" : "Double"
+              }
+            } ]
+          },
+          "slug" : "order_payments"
+        } ],
+        "outputs" : [ {
+          "id" : "wdkmUk1I",
           "schema" : {
             "providerType" : "Databricks",
             "fields" : [ {
@@ -550,29 +540,29 @@
     }
   },
   "connections" : [ {
-    "id" : "Vk4IClAT",
-    "source" : "payments##PNw9aE75",
-    "sourcePort" : "oRn69FvS",
-    "target" : "order_payments##TxNmE61y",
-    "targetPort" : "V3Io40Tl"
+    "id" : "P8nI6d97",
+    "source" : "payments##o69VRCvJ",
+    "sourcePort" : "LI7ijsAT",
+    "target" : "order_payments##DaykOllp",
+    "targetPort" : "O1ALMEPv"
   }, {
-    "id" : "XJ7nrKFG",
-    "source" : "orders##xHuCrzed",
-    "sourcePort" : "Tvs4paBM",
-    "target" : "final##h0alCLGa",
-    "targetPort" : "wnX0ozY8"
+    "id" : "A79y5jXe",
+    "source" : "orders##ljproaHF",
+    "sourcePort" : "xbzvSaeg",
+    "target" : "final##wJn3gb67",
+    "targetPort" : "if2KdIvy"
   }, {
-    "id" : "aNpEI1JK",
-    "source" : "order_payments##TxNmE61y",
-    "sourcePort" : "K9PgV2cZ",
-    "target" : "final##h0alCLGa",
-    "targetPort" : "WZJMEY43"
+    "id" : "D0Dh6WWu",
+    "source" : "order_payments##DaykOllp",
+    "sourcePort" : "mwg94PU4",
+    "target" : "final##wJn3gb67",
+    "targetPort" : "PzSj2JIU"
   }, {
-    "id" : "D15g6jlV",
-    "source" : "final##h0alCLGa",
-    "sourcePort" : "nkLeWKxS",
-    "target" : "orders##GKUuvAp1",
-    "targetPort" : "pK2otYoV"
+    "id" : "wT5x9Q27",
+    "source" : "final##wJn3gb67",
+    "sourcePort" : "wdkmUk1I",
+    "target" : "orders##rlXVA5Ac",
+    "targetPort" : "OTSXI1C6"
   } ],
   "component" : "Model"
 }
