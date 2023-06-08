@@ -1,0 +1,39 @@
+{
+  "cents_to_dollars" : {
+    "name" : "cents_to_dollars",
+    "macroType" : "expression",
+    "definition" : "round(1.0 * {{column_name}} / 100, {{decimal_places}})",
+    "parameters" : {
+      "type" : "record",
+      "fields" : [ {
+        "name" : "column_name",
+        "kind" : {
+          "type" : "value"
+        },
+        "optional" : false,
+        "isWorkflowNodeConfiguration" : false,
+        "isReferenced" : false
+      }, {
+        "name" : "decimal_places",
+        "kind" : {
+          "type" : "value",
+          "value" : "2"
+        },
+        "optional" : true,
+        "isWorkflowNodeConfiguration" : false,
+        "isReferenced" : false
+      } ]
+    },
+    "staleState" : "none"
+  },
+  "just_concat" : {
+    "name" : "just_concat",
+    "macroType" : "query",
+    "definition" : "\nselect * from dbt_alice.test limit 1",
+    "parameters" : {
+      "type" : "record",
+      "fields" : [ ]
+    },
+    "staleState" : "none"
+  }
+}

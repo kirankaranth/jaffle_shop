@@ -21,7 +21,6 @@ renamed AS (
   FROM source
 
 )
--- kiran comment
 
 SELECT *
 
