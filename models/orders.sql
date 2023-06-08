@@ -21,7 +21,7 @@ WITH payments AS (
 
 order_payments AS (
 
-  {#kiran comment 333#}
+  {#kiran comment#}
   SELECT 
     order_id,
     {% for payment_method in payment_methods %}
