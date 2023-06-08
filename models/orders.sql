@@ -42,7 +42,7 @@ order_payments AS (
 
 orders AS (
 
-  {#kiran comment#}
+  {#kiran comment 123#}
   SELECT * 
   
   FROM {{ ref('stg_orders')}}
