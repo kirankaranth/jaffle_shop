@@ -15,13 +15,13 @@
 
 
 with orders as (
--- test comment
+-- test comment 2
     select * from {{ ref('stg_orders') }}
 
 ),
 
 payments as (
--- test comment
+-- test comment 2
     select *
 
     from {{ ref('stg_payments') }}
@@ -29,7 +29,7 @@ payments as (
 ),
 
 order_payments as (
--- test comment
+-- test comment 2
     select
         order_id,
         -- {{my_abc}},
