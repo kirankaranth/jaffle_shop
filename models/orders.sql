@@ -32,6 +32,7 @@ order_payments AS (
       END) AS {{payment_method}}_amount,
     {% endfor %}
     
+    -- kiran inner comment
     sum(amount) AS total_amount
   
   FROM payments
