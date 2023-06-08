@@ -374,8 +374,8 @@
       "component" : "Model",
       "metadata" : {
         "label" : "payments",
-        "x" : 120,
-        "y" : 320,
+        "x" : -80,
+        "y" : 280,
         "phase" : 0,
         "comment" : " kiran comment"
       },
