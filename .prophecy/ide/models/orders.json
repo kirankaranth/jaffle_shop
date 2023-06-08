@@ -2,7 +2,7 @@
   "id" : "orders",
   "metainfo" : {
     "label" : "orders",
-    "autoLayout" : true,
+    "autoLayout" : false,
     "staleState" : "none",
     "sourceSuggestions" : {
       "sources" : [ ]
@@ -27,6 +27,8 @@
       "component" : "Join",
       "metadata" : {
         "label" : "final",
+        "x" : 520,
+        "y" : 220,
         "phase" : 0,
         "macroDependencies" : [ ],
         "comment" : " kiran comment"
@@ -205,6 +207,8 @@
       "component" : "Aggregate",
       "metadata" : {
         "label" : "order_payments",
+        "x" : 320,
+        "y" : 320,
         "phase" : 0,
         "macroDependencies" : [ ],
         "comment" : " kiran comment"
@@ -321,6 +325,8 @@
       "component" : "Model",
       "metadata" : {
         "label" : "orders",
+        "x" : 320,
+        "y" : 120,
         "phase" : 0,
         "comment" : " kiran comment"
       },
@@ -368,6 +374,8 @@
       "component" : "Model",
       "metadata" : {
         "label" : "payments",
+        "x" : 120,
+        "y" : 320,
         "phase" : 0,
         "comment" : " kiran comment"
       },
@@ -415,6 +423,8 @@
       "component" : "TargetModel",
       "metadata" : {
         "label" : "orders",
+        "x" : 720,
+        "y" : 220,
         "phase" : 0,
         "macroDependencies" : [ ]
       },
