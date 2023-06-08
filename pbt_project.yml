@@ -276,10 +276,7 @@ sqlSources:
     - name: testless
       schema:
         providerType: bigquery
-        fields:
-        - name: first_name
-          dataType:
-            type: String
+        fields: []
       description: null
       author: kiranadmin@prophecy.io
       createdAt: '2023-04-12 12:59:05'
