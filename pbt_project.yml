@@ -93,30 +93,7 @@ sqlModels:
     modifiedAt: '2023-04-12 12:59:05'
   .prophecy/metadata/sqlmodels/customers:
     name: customers
-    schema:
-      providerType: BigQuery
-      fields:
-      - name: customer_id
-        dataType:
-          type: Integer
-      - name: first_name
-        dataType:
-          type: String
-      - name: last_name
-        dataType:
-          type: String
-      - name: first_order
-        dataType:
-          type: Date
-      - name: most_recent_order
-        dataType:
-          type: Date
-      - name: number_of_orders
-        dataType:
-          type: Integer
-      - name: customer_lifetime_value
-        dataType:
-          type: Float
+    schema: null
     description: This table has basic information about a customer, as well as some
       derived facts based on a customer's orders
     author: kiranadmin@prophecy.io
