@@ -15,7 +15,7 @@
 
 
 with orders as (
--- test comment 2
+-- test comment 3
     select * from {{ ref('stg_orders') }}
 
 ),
