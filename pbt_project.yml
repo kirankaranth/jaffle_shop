@@ -9,78 +9,87 @@ pipelines: {}
 datasets: {}
 templates: {}
 jobs: {}
+gemContainer:
+  languageVersion: ''
+  gemLibsVersion: ''
+  gems: {}
+  dependencies: null
 functions:
   author: null
   createdAt: '2023-04-05 14:40:55'
-  modifiedAt: '2023-04-05 14:40:55'
-  gems: {}
   udfs: {}
   udafs: {}
   expressions: {}
+  airflowFunctions: {}
 subgraphs: {}
 sqlModels:
   .prophecy/metadata/sqlmodels/stg_orders:
     name: stg_orders
+    schema: null
     description: null
     author: haresh@prophecy.io
     files:
     - models/staging/stg_orders.sql
+    - .prophecy/ide/models/stg_orders.json
     - models/staging/schema.yml
     sqlDependencies:
       models: []
       datasets: []
     createdAt: '2023-04-05 14:40:55'
-    modifiedAt: '2023-04-05 14:40:55'
   .prophecy/metadata/sqlmodels/orders:
     name: orders
+    schema: null
     description: This table has basic information about orders, as well as some derived
       facts based on payments
     author: haresh@prophecy.io
     files:
     - models/orders.sql
+    - .prophecy/ide/models/orders.json
     - models/schema.yml
     sqlDependencies:
       models: []
       datasets: []
     createdAt: '2023-04-05 14:40:55'
-    modifiedAt: '2023-04-05 14:40:55'
   .prophecy/metadata/sqlmodels/customers:
     name: customers
+    schema: null
     description: This table has basic information about a customer, as well as some
       derived facts based on a customer's orders
     author: haresh@prophecy.io
     files:
     - models/customers.sql
+    - .prophecy/ide/models/customers.json
     - models/schema.yml
     sqlDependencies:
       models: []
       datasets: []
     createdAt: '2023-04-05 14:40:55'
-    modifiedAt: '2023-04-05 14:40:55'
   .prophecy/metadata/sqlmodels/stg_payments:
     name: stg_payments
+    schema: null
     description: null
     author: haresh@prophecy.io
     files:
     - models/staging/stg_payments.sql
+    - .prophecy/ide/models/stg_payments.json
     - models/staging/schema.yml
     sqlDependencies:
       models: []
       datasets: []
     createdAt: '2023-04-05 14:40:55'
-    modifiedAt: '2023-04-05 14:40:55'
   .prophecy/metadata/sqlmodels/stg_customers:
     name: stg_customers
+    schema: null
     description: null
     author: haresh@prophecy.io
     files:
     - models/staging/stg_customers.sql
+    - .prophecy/ide/models/stg_customers.json
     - models/staging/schema.yml
     sqlDependencies:
       models: []
       datasets: []
     createdAt: '2023-04-05 14:40:55'
-    modifiedAt: '2023-04-05 14:40:55'
 sqlMacros:
   .prophecy/metadata/sqlmacros/cents_to_dollars:
     name: cents_to_dollars
@@ -90,7 +99,6 @@ sqlMacros:
     files:
     - macros/cents_to_dollar.sql
     createdAt: '2023-04-05 14:40:55'
-    modifiedAt: '2023-04-05 14:40:55'
   .prophecy/metadata/sqlmacros/just_concat:
     name: just_concat
     macroType: query
@@ -99,41 +107,87 @@ sqlMacros:
     files:
     - macros/cents_to_dollar.sql
     createdAt: '2023-04-05 14:40:55'
-    modifiedAt: '2023-04-05 14:40:55'
 sqlSeeds:
   .prophecy/metadata/sqlseeds/raw_customers:
     name: raw_customers
+    schema:
+      providerType: Databricks
+      fields:
+      - name: id
+        dataType:
+          type: Integer
+      - name: first_name
+        dataType:
+          type: String
+      - name: last_name
+        dataType:
+          type: String
     description: A mapping of two letter country codes to country names. kiran1
     author: haresh@prophecy.io
     files:
     - seeds/raw_customers.csv
     - models/src_mysources.yml
     createdAt: '2023-04-05 14:40:55'
-    modifiedAt: '2023-04-05 14:40:55'
   .prophecy/metadata/sqlseeds/raw_orders:
     name: raw_orders
+    schema:
+      providerType: Databricks
+      fields:
+      - name: id
+        dataType:
+          type: Integer
+      - name: user_id
+        dataType:
+          type: Integer
+      - name: order_date
+        dataType:
+          type: Date
+      - name: status
+        dataType:
+          type: String
     description: null
     author: haresh@prophecy.io
     files:
     - seeds/raw_orders.csv
     createdAt: '2023-04-05 14:40:55'
-    modifiedAt: '2023-04-05 14:40:55'
   .prophecy/metadata/sqlseeds/raw_payments:
     name: raw_payments
+    schema:
+      providerType: Databricks
+      fields:
+      - name: id
+        dataType:
+          type: Integer
+      - name: order_id
+        dataType:
+          type: Integer
+      - name: payment_method
+        dataType:
+          type: String
+      - name: amount
+        dataType:
+          type: Integer
     description: null
     author: haresh@prophecy.io
     files:
     - seeds/raw_payments.csv
     createdAt: '2023-04-05 14:40:55'
-    modifiedAt: '2023-04-05 14:40:55'
   .prophecy/metadata/sqlseeds/snowflake_contract_rates:
     name: snowflake_contract_rates
+    schema:
+      providerType: Databricks
+      fields:
+      - name: effective_date
+        dataType:
+          type: Date
+      - name: rate
+        dataType:
+          type: Float
     description: null
     author: haresh@prophecy.io
     files:
     - seeds/snowflake_contract_rates.csv
     createdAt: '2023-04-05 14:40:55'
-    modifiedAt: '2023-04-05 14:40:55'
 sqlSources:
   .prophecy/metadata/sqlsources/myAliasedTest:
     name: myAliasedTest
@@ -142,20 +196,22 @@ sqlSources:
     files:
     - models/src_mysources.yml
     createdAt: '2023-04-05 14:40:55'
-    modifiedAt: '2023-04-05 14:40:55'
     tables:
     - name: testless
+      schema:
+        providerType: databricks
+        fields: []
       description: null
       author: haresh@prophecy.io
       createdAt: '2023-04-05 14:40:55'
-      modifiedAt: '2023-04-05 14:40:55'
 sqlUnreferencedSources: {}
 sqlPipeline:
   name: sqlPipeline
   description: null
   author: haresh@prophecy.io
   createdAt: '2023-04-05 14:40:55'
-  modifiedAt: '2023-04-05 14:40:55'
 dependencies: '[]'
 projectDependencies: {}
+flags:
+  shouldAddDefaultDependenciesIfAbsent: true
 pipelineConfigurations: {}
