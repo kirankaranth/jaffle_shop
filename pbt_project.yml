@@ -1,6 +1,6 @@
 name: jaffle_shop
 description: ''
-version: '2'
+version: 3.import
 author: null
 language: sql
 buildSystem: ''
@@ -21,6 +21,7 @@ functions:
   udafs: {}
   expressions: {}
   airflowFunctions: {}
+  businessRules: {}
 subgraphs: {}
 sqlModels:
   .prophecy/metadata/sqlmodels/stg_orders:
@@ -35,6 +36,9 @@ sqlModels:
     sqlDependencies:
       models: []
       datasets: []
+      seeds: []
+      sources: []
+      snapshots: []
     createdAt: '2023-04-05 14:40:55'
   .prophecy/metadata/sqlmodels/orders:
     name: orders
@@ -49,6 +53,9 @@ sqlModels:
     sqlDependencies:
       models: []
       datasets: []
+      seeds: []
+      sources: []
+      snapshots: []
     createdAt: '2023-04-05 14:40:55'
   .prophecy/metadata/sqlmodels/customers:
     name: customers
@@ -63,6 +70,9 @@ sqlModels:
     sqlDependencies:
       models: []
       datasets: []
+      seeds: []
+      sources: []
+      snapshots: []
     createdAt: '2023-04-05 14:40:55'
   .prophecy/metadata/sqlmodels/stg_payments:
     name: stg_payments
@@ -76,6 +86,9 @@ sqlModels:
     sqlDependencies:
       models: []
       datasets: []
+      seeds: []
+      sources: []
+      snapshots: []
     createdAt: '2023-04-05 14:40:55'
   .prophecy/metadata/sqlmodels/stg_customers:
     name: stg_customers
@@ -89,7 +102,12 @@ sqlModels:
     sqlDependencies:
       models: []
       datasets: []
+      seeds: []
+      sources: []
+      snapshots: []
     createdAt: '2023-04-05 14:40:55'
+sqlSnapshots: {}
+sqlTests: {}
 sqlMacros:
   .prophecy/metadata/sqlmacros/cents_to_dollars:
     name: cents_to_dollars
